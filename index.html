@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">
+        <h1>Image Gallery</h1>
+        <span class="badge">Lightbox • Filters • Responsive</span>
+      </div>
+      <div class="controls">
+        <div class="filters" role="tablist" aria-label="Image category filters">
+          <button class="active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button data-filter="nature" role="tab" aria-selected="false">Nature</button>
+          <button data-filter="city" role="tab" aria-selected="false">City</button>
+          <button data-filter="people" role="tab" aria-selected="false">People</button>
+          <button data-filter="animals" role="tab" aria-selected="false">Animals</button>
+        </div>
+        <label class="search">
+          <span class="icon">🔎</span>
+          <input id="searchInput" type="search" placeholder="Search caption…" aria-label="Search caption" />
+        </label>
+      </div>
+    </header>
+
+    <main class="gallery" id="gallery" aria-live="polite">
+      <!-- Example items -->
+      <figure class="item" data-category="nature" data-caption="Sunset over misty mountains">
+        <img src="https://picsum.photos/seed/nature1/800/600" alt="Sunset over misty mountains" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Sunset over misty mountains</span>
+          <span class="tag">Nature</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="city" data-caption="City skyline at night">
+        <img src="https://picsum.photos/seed/city1/800/600" alt="City skyline at night" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">City skyline at night</span>
+          <span class="tag">City</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="people" data-caption="Portrait with soft light">
+        <img src="https://picsum.photos/seed/people1/800/600" alt="Portrait with soft light" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Portrait with soft light</span>
+          <span class="tag">People</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="animals" data-caption="Curious fox in the woods">
+        <img src="https://picsum.photos/seed/animals1/800/600" alt="Curious fox in the woods" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Curious fox in the woods</span>
+          <span class="tag">Animals</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="nature" data-caption="Waterfall in tropical forest">
+        <img src="https://picsum.photos/seed/nature2/800/600" alt="Waterfall in tropical forest" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Waterfall in tropical forest</span>
+          <span class="tag">Nature</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="city" data-caption="Old street with colorful buildings">
+        <img src="https://picsum.photos/seed/city2/800/600" alt="Old street with colorful buildings" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Old street with colorful buildings</span>
+          <span class="tag">City</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="people" data-caption="Friends laughing at a cafe">
+        <img src="https://picsum.photos/seed/people2/800/600" alt="Friends laughing at a cafe" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Friends laughing at a cafe</span>
+          <span class="tag">People</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="animals" data-caption="Sea turtle underwater">
+        <img src="https://picsum.photos/seed/animals2/800/600" alt="Sea turtle underwater" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Sea turtle underwater</span>
+          <span class="tag">Animals</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="nature" data-caption="Lavender field at dawn">
+        <img src="https://picsum.photos/seed/nature3/800/600" alt="Lavender field at dawn" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Lavender field at dawn</span>
+          <span class="tag">Nature</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="city" data-caption="Tram passing through downtown">
+        <img src="https://picsum.photos/seed/city3/800/600" alt="Tram passing through downtown" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Tram passing through downtown</span>
+          <span class="tag">City</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="people" data-caption="Dancer in motion on stage">
+        <img src="https://picsum.photos/seed/people3/800/600" alt="Dancer in motion on stage" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Dancer in motion on stage</span>
+          <span class="tag">People</span>
+        </figcaption>
+      </figure>
+      <figure class="item" data-category="animals" data-caption="Puppy playing in the grass">
+        <img src="https://picsum.photos/seed/animals3/800/600" alt="Puppy playing in the grass" loading="lazy" />
+        <figcaption class="caption">
+          <span class="label">Puppy playing in the grass</span>
+          <span class="tag">Animals</span>
+        </figcaption>
+      </figure>
+    </main>
+
+    <footer>
+      Pro tip: Click any image to open the lightbox. Use ←/→ to navigate, and Esc to close.
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+    <div class="stage">
+      <button class="lb-btn close-btn" id="btnClose" aria-label="Close (Esc)">✕</button>
+      <div class="controls-overlay">
+        <button class="lb-btn" id="btnPrev" aria-label="Previous (←)">◀</button>
+        <button class="lb-btn" id="btnNext" aria-label="Next (→)">▶</button>
+      </div>
+      <img id="lightboxImg" src="" alt="" />
+      <div class="meta">
+        <div>
+          <strong id="lbCaption">&nbsp;</strong>
+        </div>
+        <div id="lbCounter" aria-live="polite">1 / 1</div>
+      </div>
+    </div>
+  </div>
+  
